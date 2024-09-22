@@ -9,17 +9,14 @@ class ErrorSchema(BaseModel):
 
 class NearestEarthObjectInfo(BaseModel):
     name: str
-    est_diamenter_min: int
-    est_diameter_max: int
-    relative_velocity: int
-    hazardous: bool
+    est_diamenter_min: float
+    est_diameter_max: float
+    relative_velocity: float
 
-    def insert_neo_to_db(self, session: Session):
+    def insert_neo_to_db(self, session: Session, hazardous: bool) -> NearestEarthObject:
         """Insere um objeto próximo à Terra no banco de dados."""
         try: 
-            neo = NearestEarthObject(name=self.name, est_diamenter_min=self.est_diamenter_min,
-                                 est_diameter_max=self.est_diameter_max, relative_velocity=self.relative_velocity,
-                                 hazardous=self.hazardous)
+            neo = NearestEarthObject(nearest_earth_object=self, hazardous=hazardous)
             session.add(neo)
             session.commit()
             session.refresh(neo)
@@ -34,12 +31,14 @@ class NearestEarthObjectInfo(BaseModel):
 class NearestEarthObjectInfoResponse(BaseModel):
     """Define como um objeto de informação de um objeto próximo à Terra deve ser retornado."""
     name: str
+    message: str
     hazardous: bool
 
     @classmethod
-    def from_neo_info(cls, neo_info: NearestEarthObjectInfo):
+    def from_neo_info(cls, neo_info: NearestEarthObjectInfo, hazardous: bool) -> "NearestEarthObjectInfoResponse":
         """Cria a resposta que será retornada na API."""
-        return cls(name=neo_info.name, hazardous=neo_info.hazardous)
+        message = f"O objeto {neo_info.name} foi inserido em nossa base de dados com sucesso. Periculosidade: {'Sim' if hazardous else 'Não'}."
+        return cls(name=neo_info.name, message=message, hazardous=hazardous)
 
 
 
