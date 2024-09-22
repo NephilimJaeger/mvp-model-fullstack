@@ -3,7 +3,7 @@ import requests
 
 class NeoPredictionApp:
     API_URL = "http://localhost:8000/neo"
-    IMAGE_URL = "https://apod.nasa.gov/apod/image/2408/2024_07_28_Olbers_Kunka_Kunetice_1500px.png"
+    IMAGE_URL = "https://cdn.mos.cms.futurecdn.net/FAdM9sLkkfPpEQu4m4dm8a.jpg"
 
     def __init__(self):
         self.name = ""
@@ -17,7 +17,8 @@ class NeoPredictionApp:
             f"""
             <style>
             .stApp {{
-                background-image: url("{self.IMAGE_URL}");
+                background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), 
+                            url("{self.IMAGE_URL}");
                 background-size: cover;
             }}
             </style>
@@ -62,7 +63,7 @@ class NeoPredictionApp:
 
     def run(self):
         """Função principal que orquestra o fluxo do aplicativo."""
-        st.title("Esse asteróide vai nos matar?")
+        st.title("Esse objeto celeste é perigoso?")
 
         self.add_background_image()
         
