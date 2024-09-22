@@ -15,8 +15,8 @@ class NearestEarthObjectInfo:
 class NearestEarthObject(Base):
     __tablename__ = "nearest_earth_object"
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String)
+    id = Column(Integer,autoincrement=True)
+    name = Column(String, primary_key=True, unique= True)
     est_diamenter_min = Column(Float)
     est_diameter_max = Column(Float)
     relative_velocity = Column(Float)

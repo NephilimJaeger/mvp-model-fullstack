@@ -9,10 +9,10 @@ app = FastAPI()
     200: {"description": "Successful Response", "model": NearestEarthObjectInfoResponse},
     400: {"description": "Error Response", "model": ErrorSchema}
 })
-def create_nearest_earth_object(neo_info: NearestEarthObjectInfo):
+def predict_nearest_earth_object(neo_info: NearestEarthObjectInfo):
     try:
         hazardous = predict_hazardous(neo_info)
-        neo = neo_info.insert_neo_to_db(session, hazardous)
+        neo_info.insert_neo_to_db(session, hazardous)
         response = NearestEarthObjectInfoResponse.from_neo_info(neo_info, hazardous)
         return response
     except Exception as e:

@@ -13,9 +13,16 @@ class NearestEarthObjectInfo(BaseModel):
     est_diameter_max: float
     relative_velocity: float
 
+    def check_if_neo_exists(self, session: Session) -> bool:
+        """Verifica se um objeto próximo à Terra já existe no banco de dados."""
+        neo = session.query(NearestEarthObject).filter(NearestEarthObject.name == self.name).first()
+        return neo is not None
+
     def insert_neo_to_db(self, session: Session, hazardous: bool) -> NearestEarthObject:
         """Insere um objeto próximo à Terra no banco de dados."""
-        try: 
+        try:
+            if self.check_if_neo_exists(session):
+                raise ValueError("O objeto próximo à Terra já existe no banco de dados.") 
             neo = NearestEarthObject(nearest_earth_object=self, hazardous=hazardous)
             session.add(neo)
             session.commit()
