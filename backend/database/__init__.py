@@ -4,7 +4,7 @@ from sqlalchemy_utils import database_exists, create_database
 from .db_models import Base
 
 
-DB_PATH = "./app/database"
+DB_PATH = "./backend/database"
 DB_URL = f"sqlite:///{DB_PATH}/neo.db"
 
 engine = create_engine(DB_URL, echo=True)

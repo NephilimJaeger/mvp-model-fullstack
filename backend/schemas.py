@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from sqlalchemy.orm.session import Session
-from app.database.db_models import NearestEarthObject
+from backend.database.db_models import NearestEarthObject
 
 
 class ErrorSchema(BaseModel):

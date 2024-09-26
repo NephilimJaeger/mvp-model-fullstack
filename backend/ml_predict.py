@@ -1,5 +1,5 @@
 from pickle import load
-from app.database.db_models import NearestEarthObjectInfo
+from backend.database.db_models import NearestEarthObjectInfo
 
 
 def predict_hazardous(neo_info: NearestEarthObjectInfo) -> bool:

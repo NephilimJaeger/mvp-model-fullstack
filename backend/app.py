@@ -1,11 +1,11 @@
 from fastapi import FastAPI, HTTPException
-from app.schemas import (
+from backend.schemas import (
     ErrorSchema,
     NearestEarthObjectInfo,
     NearestEarthObjectInfoResponse,
 )
-from app.database import session
-from app.ml_predict import predict_hazardous
+from backend.database import session
+from backend.ml_predict import predict_hazardous
 
 app = FastAPI()
 

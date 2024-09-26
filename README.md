@@ -1,1 +1,0 @@
-# mvp-model-fullstack
