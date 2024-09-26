@@ -58,9 +58,7 @@ class NeoPredictionApp:
         """Exibe o resultado da predição na tela."""
         if response.status_code == 200:
             result = response.json()
-            st.success(f"Objeto: {result['name']}")
-            st.info(f"Mensagem: {result['message']}")
-            st.warning(f"Perigoso: {'Sim' if result['hazardous'] else 'Não'}")
+            st.warning(f"Perigoso? {'Sim' if result['hazardous'] else 'Não'}",icon= "🚨")
         else:
             try:
                 error_message = response.json().get("detail", "Erro desconhecido.")
