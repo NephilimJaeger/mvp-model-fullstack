@@ -38,7 +38,7 @@ class NeoPredictionApp:
                 "Velocidade Relativa (em km/h)", min_value=0.0, format="%.4f"
             )
             self.absolute_magnitude = st.number_input(
-                "Magnitude Absoluta", min_value=0.0, format="%.4f"
+                "Magnitude Absoluta", min_value=0.0,
             )
             submit_button = st.form_submit_button(label="Enviar")
         return submit_button
