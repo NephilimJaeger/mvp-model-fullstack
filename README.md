@@ -1,4 +1,4 @@
-# PUC-Rio MVP Sprint Qualidade de Software, Segurança e Sistemas Inteligentes
+# PUC(Rio) - MVP Sprint Qualidade de Software, Segurança e Sistemas Inteligentes
 
 Aplicação para classificar asteróides em perigosos ou não para a vida na Terra.
 
