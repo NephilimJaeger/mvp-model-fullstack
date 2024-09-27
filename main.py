@@ -10,7 +10,8 @@ def run_streamlit():
     subprocess.run(["streamlit", "run", "frontend/streamlit_app.py"])
 
 if __name__ == "__main__":
-    # Criar threads para cada servidor
+    # Criar threads para cada servidor 
+    
     fastapi_thread = threading.Thread(target=run_fastapi, daemon=True)
     streamlit_thread = threading.Thread(target=run_streamlit, daemon=True)
 
